@@ -6,7 +6,7 @@ input form - search for pet species
 list of items - list of pets up for adoption
 chart - age of pets 
 authentification - login to post/adopt
-offline support -
+offline support - 
 online support - 
-intent - send email when someone wants to adopt a pet
+intent - notify a user when someone wants to adopt his pet 
 anmations - at successfull login
