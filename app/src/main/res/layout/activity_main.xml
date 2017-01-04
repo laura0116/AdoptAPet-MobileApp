@@ -8,35 +8,45 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#2E9AFE"
-    tools:context="com.example.laura.androidapp.MainActivity">
+    android:background="@color/colorPrimary"
+    tools:context="com.example.laura.petadoption.activities.MainActivity">
+
+    <EditText
+        android:id="@+id/EmailBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/EmailSend"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
 
     <Button
-        android:text="Pet List"
+        android:id="@+id/PetRepo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:id="@+id/PetRepo" />
+        android:text="Pet List" />
 
     <Button
-        android:text="Send"
+        android:id="@+id/EmailSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ChartButton"
+        android:layout_alignEnd="@+id/ChartButton"
+        android:layout_alignStart="@+id/ChartButton"
+        android:text="Send" />
+
+    <Button
+        android:text="Chart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/PetRepo"
+        android:layout_alignEnd="@+id/PetRepo"
         android:layout_alignStart="@+id/PetRepo"
-        android:id="@+id/EmailSend"
-        android:layout_alignEnd="@+id/PetRepo" />
+        android:id="@+id/ChartButton" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Type message"
-        android:ems="10"
-        android:layout_above="@+id/EmailSend"
-        android:layout_centerHorizontal="true"
-        android:background="#6E6E6E"
-        android:id="@+id/EmailBody" />
 </RelativeLayout>

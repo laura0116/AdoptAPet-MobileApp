@@ -1,12 +1,16 @@
-package com.example.laura.androidapp;
+package com.example.laura.petadoption.activities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.laura.petadoption.R;
+import com.example.laura.petadoption.repository.PetRepo;
+import com.example.laura.petadoption.fragments.Chart;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         petRepoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PetRepo.class));
+                startActivity(new Intent(MainActivity.this, PetListActivity.class));
             }
         });
 
@@ -40,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(emailIntent);
             }
         });
-
+        Button chartButton = (Button) findViewById(R.id.ChartButton);
+        chartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Chart().show(getFragmentManager(), "chart");
+            }
+        });
     }
 }

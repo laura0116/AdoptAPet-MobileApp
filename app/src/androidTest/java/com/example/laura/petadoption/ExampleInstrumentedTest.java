@@ -1,4 +1,4 @@
-package com.example.laura.androidapp;
+package com.example.laura.petadoption;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.laura.androidapp", appContext.getPackageName());
+        assertEquals("com.example.laura.petadoption", appContext.getPackageName());
     }
 }

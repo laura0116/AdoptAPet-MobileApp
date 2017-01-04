@@ -1,4 +1,4 @@
-package com.example.laura.androidapp;
+package com.example.laura.petadoption;
 
 import org.junit.Test;
 
