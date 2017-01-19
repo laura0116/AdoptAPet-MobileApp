@@ -48,5 +48,12 @@
         android:layout_alignEnd="@+id/PetRepo"
         android:layout_alignStart="@+id/PetRepo"
         android:id="@+id/ChartButton" />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/buttonLogout"
+        android:layout_gravity="end"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

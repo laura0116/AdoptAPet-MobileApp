@@ -33,6 +33,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -58,7 +59,7 @@ public class Chart extends DialogFragment {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         Realm.init(getContext());
-        PetController dummyController = new PetController(new RealmPetRepo(Realm.getDefaultInstance()));
+        PetController dummyController = new PetController(new RealmPetRepo(Realm.getDefaultInstance(), FirebaseDatabase.getInstance().getReference()));
         List<PieEntry> entries = new ArrayList<>();
         List<LegendEntry> labels = new ArrayList<>();
         Map<String, Integer> ages = new HashMap<>();

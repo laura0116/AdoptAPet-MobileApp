@@ -1,5 +1,10 @@
 package com.example.laura.petadoption.model;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import io.realm.RealmObject;
 
 /**
@@ -26,5 +31,14 @@ public class Pet extends RealmObject {
     public void setSpecies(String species) {this.species = species;}
     public int getAge(){return age;}
     public void setAge(int age) { this.age =age; }
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("id",id);
+        result.put("name", name);
+        result.put("species", species);
+        result.put("age", age);
+        return result;
+    }
 
 }

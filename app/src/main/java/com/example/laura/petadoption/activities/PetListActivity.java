@@ -15,6 +15,14 @@ import com.example.laura.petadoption.fragments.PetInputDialog;
 import com.example.laura.petadoption.model.Pet;
 import com.example.laura.petadoption.repository.IPetRepo;
 import com.example.laura.petadoption.repository.RealmPetRepo;
+import com.example.laura.petadoption.utils.Observer;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import io.realm.Realm;
 
@@ -22,11 +30,13 @@ import io.realm.Realm;
  * Created by Laura on 12/18/2016.
  */
 
-public class PetListActivity extends AppCompatActivity {
+public class PetListActivity extends AppCompatActivity implements Observer {
     ListView petList;
     ArrayAdapter adapter;
-    IPetRepo repo;
+    RealmPetRepo repo;
     PetController controller;
+    private DatabaseReference mDatabase;
+
 
     public void updatePet(int id, String name,String species, int age){
         controller.updatePet(id,name,species,age);
@@ -45,7 +55,9 @@ public class PetListActivity extends AppCompatActivity {
 
     public void setupAdapter(){
         Realm realm = Realm.getDefaultInstance();
-        repo = new RealmPetRepo(realm);
+        repo = new RealmPetRepo(realm,mDatabase);
+        repo.registerObserver(this);
+        repo.loadPets();
         controller =  new PetController(repo);
 
         setContentView(R.layout.activity_pet_list);
@@ -93,9 +105,17 @@ public class PetListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Realm.init(getApplicationContext());
+        mDatabase=FirebaseDatabase.getInstance().getReference();
         setupAdapter();
         addButton();
         addListView();
+    }
+
+    @Override
+    public void update(String message) {
+        if (adapter != null){
+            adapter.notifyDataSetChanged();
+        }
     }
 }
 
